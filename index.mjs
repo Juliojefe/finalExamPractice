@@ -25,7 +25,7 @@ app.get('/', async (req, res) => {
   let sql = "select * from fe_comics order by rand() limit 1";
   const [randomComic] = await pool.query(sql);
   console.log(randomComic);
-  res.render(home.ejs, { randomComic });
+  res.render('home.ejs', { randomComic });
 });
 
 app.get("/dbTest", async (req, res) => {
