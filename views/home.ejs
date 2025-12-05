@@ -6,7 +6,18 @@
   <title>Comics</title>
 </head>
 <body>
-  <h1>My Favorite COmics</h1>
-  <img src="<%= randomComic[0].comicUrl %>" width="800">
+  <h1>A Random Comic</h1>
+  <img src="<%= randomComic[0].comicUrl %>" width="800" id="comicImg">
+  <button id="randomComic">Random Comic</button>
+  <script>
+    document.querySelector("#randomComic").addEventListener("click", getRandomComic);
+    async function getRandomComic() {
+      let randomComic = await fetch('/api/randomComic');
+      let comicData = await randomComic.json();
+      console.log(comicData);
+      const img = document.querySelector("#comicImg");
+      img.src = comicData.comicUrl;
+    }
+  </script>
 </body>
 </html>

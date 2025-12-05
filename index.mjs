@@ -22,10 +22,15 @@ const pool = mysql.createPool({
 
 //routes
 app.get('/', async (req, res) => {
-  let sql = "select * from fe_comics order by rand() limit 1";
+  let sql = "select * from fe_comics order by rand() limit 1";  //  select a single random comic
   const [randomComic] = await pool.query(sql);
-  console.log(randomComic);
   res.render('home.ejs', { randomComic });
+});
+
+app.get('/api/randomComic', async (req, res) => {
+  let sql = "select * from fe_comics order by rand() limit 1";  //  select a single random comic
+  const [randomComic] = await pool.query(sql);
+  res.send(randomComic[0]);
 });
 
 app.get("/dbTest", async (req, res) => {
