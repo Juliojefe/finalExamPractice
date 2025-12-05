@@ -6,8 +6,14 @@
   <title>Comics</title>
 </head>
 <body>
-  <h1>A Random Comic</h1>
+  <h1>My Favorite Comics</h1>
+  <br>
+  <a href="/addComic">
+    <button>Add Comic</button>
+  </a>
+  <h3>Random Comics</h3>
   <img src="<%= randomComic[0].comicUrl %>" width="800" id="comicImg">
+  <br>
   <button id="randomComic">Random Comic</button>
   <script>
     document.querySelector("#randomComic").addEventListener("click", getRandomComic);
