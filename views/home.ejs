@@ -11,6 +11,12 @@
   <a href="/addComic">
     <button>Add Comic</button>
   </a>
+  <br>
+  <% for (let item of comicSitesInfo) { %>
+    <a href="<%= item.comicSiteUrl %>"><%= item.comicSiteName %></a>
+    <br>
+  <% } %>
+  <br>
   <h3>Random Comics</h3>
   <img src="<%= randomComic[0].comicUrl %>" width="800" id="comicImg">
   <br>

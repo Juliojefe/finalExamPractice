@@ -23,8 +23,11 @@ const pool = mysql.createPool({
 //routes
 app.get('/', async (req, res) => {
   let sql = "select * from fe_comics order by rand() limit 1";  //  select a single random comic
+  let sql2 = "select * from fe_comic_sites";
   const [randomComic] = await pool.query(sql);
-  res.render('home.ejs', { randomComic });
+  const [comicSitesInfo] = await pool.query(sql2);
+  console.log(comicSitesInfo);
+  res.render('home.ejs', { randomComic, comicSitesInfo });
 });
 
 app.get('/api/randomComic', async (req, res) => {
